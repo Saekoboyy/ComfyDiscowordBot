@@ -1,0 +1,6 @@
+[submodule "ComfyUI"]
+	path = ComfyUI
+	url = https://github.com/comfyanonymous/ComfyUI
+[submodule "ComfyDiscord"]
+	path = ComfyDiscord
+	url = https://github.com/HeyItsJustFelix/ComfyDiscordBot
