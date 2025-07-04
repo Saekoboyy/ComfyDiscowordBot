@@ -1,7 +1,8 @@
 # ComfyDiscordBot
 A discord bot utilizing ComfyUI's API capability (and heavily modified)
 
-## Links I might need: [ComfyUI](https://github.com/comfyanonymous/ComfyUI
+## Links I might need:
+[ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 [Yiffymix XL v52](https://civitai.com/models/3671?modelVersionId=732770)
 [Source Code for front-end](https://github.com/HeyItsJustFelix/ComfyDiscordBot/archive/refs/heads/main.zip).
 
