@@ -139,6 +139,7 @@ async def self(interaction:discord.Interaction, prompt:str, model:typing.Literal
     if interaction.user.id in AUTHORIZED_BOT_USERS:
         prompt = prompt.replace("Felix", "A solo male gray otter with red hair and blue eyes and black ears")
         prompt = prompt.replace("Saekoboyy", "slim anthro grey male wolf with a white belly")
+        prompt = prompt.replace("Zed", "dark purple and black coloured fox body (solo), bright purple hair, the hair covers the right eye and stops at the neck, male hair, black pawpads, purple eyes, fox, male, gay, anthro, fullbody")
         await generate(interaction, prompt, model, negative)
     else:
         await interaction.response.send_message("No", ephemeral=False)
