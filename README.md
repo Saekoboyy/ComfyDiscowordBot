@@ -8,7 +8,6 @@ A discord bot utilizing ComfyUI's API capability (and heavily modified)
 
 ## Running the bot code
 
-### Linux specific instructions
 Python 3.11 or newer, commands are as follows:
 `python3 -m venv env` then `source ./env/bin/activate`. <-- Optional Python environment where you can install packages locally.
 `python -m pip install -r requirements.txt` for installing and `python main.py` to turn it on.
