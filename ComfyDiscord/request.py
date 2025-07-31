@@ -92,14 +92,18 @@ call = """
         "title": "Empty Latent Image"
         }
     },
-    "save_image_websocket_node": {
-        "class_type": "SaveImageWebsocket",
+    "24": {
         "inputs": {
-            "images": [
-                "20",
-                0
-            ]
+        "filename_prefix": "bot",
+        "images": [
+            "20",
+            0
+        ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+        "title": "Save Image"
         }
     }
-}
+    }
     """
