@@ -22,14 +22,8 @@ bad_prompt_words = "text, watermark"
 global cur_model
 cur_model = "Yiffymix"
 
-# List of user IDs that are authorized to use the generate command
-AUTHORIZED_BOT_USERS = [951510569700171867, 770518291273089026, 521365728767508480]
-
 # List of user IDs that are authorized to use the kill command
-AUTHORIZED_KILL_USERS = [951510569700171867]
-
-# List of user IDs that are authorized to use the restart command
-AUTHORIZED_RESTART_USERS = [951510569700171867, 770518291273089026]
+AUTH_KILL = [951510569700171867, 770518291273089026]
 
 class aclient(discord.AutoShardedClient):
     def __init__(self):
@@ -136,13 +130,10 @@ for model_id, model_data in models_config["models"].items():
 
 @tree.command(name = "generate", description="Make an image")
 async def self(interaction:discord.Interaction, prompt:str, model:typing.Literal[*models], negative:str = ""):
-    if interaction.user.id in AUTHORIZED_BOT_USERS:
-        prompt = prompt.replace("Felix", "A solo male gray otter with red hair and blue eyes and black ears")
-        prompt = prompt.replace("Saekoboyy", "slim anthro grey male wolf with a white belly")
-        prompt = prompt.replace("Zed", "dark purple and black coloured fox body (solo), bright purple hair, the hair covers the right eye and stops at the neck, male hair, black pawpads, purple eyes, fox, male, gay, anthro, fullbody")
-        await generate(interaction, prompt, model, negative)
-    else:
-        await interaction.response.send_message("No", ephemeral=False)
+    prompt = prompt.replace("Felix", "A solo male gray otter with red hair and blue eyes and black ears")
+    prompt = prompt.replace("Saekoboyy", "slim anthro grey male wolf with a white belly")
+    prompt = prompt.replace("Zed", "dark purple and black coloured fox body, bright purple hair, the hair covers the right eye and stops at the neck, male hair, black pawpads, purple eyes, fox, male, gay, anthro, fullbody")
+    await generate(interaction, prompt, model, negative)
 
 class Regenerate(discord.ui.View):
     def __init__(self, prompt, model, user_id, message):
@@ -169,27 +160,19 @@ class Regenerate(discord.ui.View):
 async def self(interaction:discord.Interaction, command:typing.Literal["Sync Tree"], input:str = "", input2:str = ""):
     if command == "Sync Tree":
         await tree.sync()
-        await interaction.response.send_message("Tree synced successfully!", ephemeral= True)
-        
-@tree.command(name="kill", description="Shut down the bot (restricted to specific users)")
-async def kill(interaction: discord.Interaction):
-    if interaction.user.id in AUTHORIZED_KILL_USERS:
-        await interaction.response.send_message("oof", ephemeral=False)
-        await bot.close()
-        return
-    else:
-        if interaction.user.id == 770518291273089026:
-            await interaction.response.send_message("Why kill <@951510569700171867>'s bot?", ephemeral=False)
+        await interaction.response.send_message("Tree synced successfully!", ephemeral= False)
+    if command == "kill":
+        if interaction.user.id in AUTH_KILL:
+            await interaction.response.send_message("oof", ephemeral=False)
+            await bot.close()
         else:
-            await interaction.response.send_message("ICBM en-route to interaction.user.mention's current location <@951510569700171867>", ephemeral=False)
-        
-@tree.command(name="restart", description="Restarts the bot (Notice= Front-end only, if back-end crashes then your shit outta luck)")
-async def restart(interaction: discord.Interaction):
-    if interaction.user.id in AUTHORIZED_RESTART_USERS:
-        await interaction.response.send_message("Restarting...", ephemeral=False)
-        await bot.close()
-        os.execv(sys.executable, ['python'] + sys.argv)
-    else:
-        await interaction.response.send_message("Sorry but your not allowed to do that, try contacting the dev or his bf to restart :3", ephemeral=True)
+            await interaction.response.send_message("oof", ephemeral=False)
+    if command == "restart":
+    	if interaction.user.id in AUTH_KILL:
+        	await interaction.response.send_message("Restarting...", ephemeral=False)
+        	await bot.close()
+        	os.execv(sys.executable, ['python'] + sys.argv)
+        else:
+            await interaction.response.send_message("Sorry but your not allowed to do that, contact the dev to restart :3", ephemeral=False)
 
 bot.run(key)
