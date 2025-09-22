@@ -167,12 +167,5 @@ async def self(interaction:discord.Interaction, command:typing.Literal["Sync Tre
             await bot.close()
         else:
             await interaction.response.send_message("oof", ephemeral=False)
-    if command == "restart":
-    	if interaction.user.id in AUTH_KILL:
-        	await interaction.response.send_message("Restarting...", ephemeral=False)
-        	await bot.close()
-        	os.execv(sys.executable, ['python'] + sys.argv)
-        else:
-            await interaction.response.send_message("Sorry but your not allowed to do that, contact the dev to restart :3", ephemeral=False)
 
 bot.run(key)
