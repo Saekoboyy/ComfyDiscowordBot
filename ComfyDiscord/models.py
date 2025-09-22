@@ -6,8 +6,15 @@ models_config = {
             "filename":"yiffymix_v62Noobxl.safetensors",
             "scheduler":"normal",
             "sampler":"ddpm",
-            "steps":17,
-            "cfg":5.0
+            "steps":20,
+            "cfg":8.0
         }
+#        "softFurry":{
+#            "filename":"softFurry_softFurryV60.safetensors",
+#            "scheduler":"normal",
+#            "sampler":"ddpm",
+#            "steps":20,
+#            "cfg":8.0
+#        }
     }
 }
