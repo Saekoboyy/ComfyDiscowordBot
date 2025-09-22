@@ -157,7 +157,7 @@ class Regenerate(discord.ui.View):
             await interaction.response.send_message("Thanks for reporting.", ephemeral=True)
 
 @tree.command(name = "dev", description="Developer commands")
-async def self(interaction:discord.Interaction, command:typing.Literal["Sync Tree"], input:str = "", input2:str = ""):
+async def self(interaction:discord.Interaction, command:typing.Literal["Sync Tree", "kill"], input:str = "", input2:str = ""):
     if command == "Sync Tree":
         await tree.sync()
         await interaction.response.send_message("Tree synced successfully!", ephemeral= False)
