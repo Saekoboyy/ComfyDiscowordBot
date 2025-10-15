@@ -23,7 +23,7 @@ global cur_model
 cur_model = "Yiffymix"
 
 # List of user IDs that are authorized to use the kill command
-AUTH_KILL = [951510569700171867, 770518291273089026]
+AUTH_KILL = [951510569700171867, 806100693135786014]
 
 class aclient(discord.AutoShardedClient):
     def __init__(self):
@@ -132,7 +132,6 @@ for model_id, model_data in models_config["models"].items():
 async def self(interaction:discord.Interaction, prompt:str, model:typing.Literal[*models], negative:str = ""):
     prompt = prompt.replace("Felix", "A solo male gray otter with red hair and blue eyes and black ears")
     prompt = prompt.replace("Saekoboyy", "slim anthro grey male wolf with a white belly")
-    prompt = prompt.replace("Zed", "dark purple and black coloured fox body, bright purple hair, the hair covers the right eye and stops at the neck, male hair, black pawpads, purple eyes, fox, male, gay, anthro, fullbody")
     await generate(interaction, prompt, model, negative)
 
 class Regenerate(discord.ui.View):
